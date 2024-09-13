@@ -9,6 +9,7 @@ To set-up a repo to be synced with Overleaf and a separate repo synced with Gitl
 Add a symlink to this in `/usr/local/bin/cms_init_repos.sh` and then use as 
 
 ```bash
+mkdir note-HIG && cd note-HIG
 cms_init_repos.sh HIG-23-012 notes <overleaf-repo-hash>
 ```
 

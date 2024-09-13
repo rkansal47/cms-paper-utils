@@ -10,10 +10,27 @@ Add a symlink to this in `/usr/local/bin/cms_init_repos.sh` and then use as
 
 ```bash
 mkdir note-HIG && cd note-HIG
-cms_init_repos.sh HIG-23-012 notes <overleaf-repo-hash>
+cms_init_repos.sh HIG-23-012 notes
 ```
 
-**TODO: check if merge conflicts are resolved with `-X ours`**
+## Overleaf synchronization
+
+Unfortunately, it is not easy to automate this step anymore with Overleaf now requiring authentication tokens. 
+Instead, first:
+
+1. Create an Overleaf blank document
+2. Delete the `main.tex` file
+3. Copy the git url
+
+Then, enter these commands manually:
+
+```bash
+git remote add overleaf $overleafgiturl
+git fetch overleaf
+git checkout -b overleaf_master overleaf/master
+git merge --allow-unrelated-histories feature/overleaf -X ours
+git push overleaf HEAD:master
+```
 
 ## copy_files.sh
 

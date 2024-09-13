@@ -38,10 +38,10 @@ git push --set-upstream origin feature/overleaf
 
 
 # sync with Overleaf repo
-git remote add overleaf   https://git.overleaf.com/$overleafrepo
+git remote add overleaf $overleafrepo
 git fetch overleaf
 git checkout -b overleaf_master overleaf/master
-git merge --allow-unrelated-histories feature/overleaf -X ours
+git merge --no-edit --allow-unrelated-histories feature/overleaf -X ours
 git push overleaf HEAD:master
 
 

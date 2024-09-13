@@ -1,12 +1,11 @@
 #!/bin/zsh
 # Script for initializing the Overleaf repo and a separate master repo synced with Gitlab
-# Note that the Overleaf syncing has to be done separately (see README)
-#
-# Usage: ./init_repo.sh <repo> <repotype>
-# Example: ./init_repo.sh HIG-23-012 notes
+# Usage: ./init_repo.sh <repo> <repotype> <overleaf repo hash>
+# Example: ./init_repo.sh HIG-23-012 notes 667f2ccce2d92e4892dfa502
 
 repo=$1
 repotype=$2
+overleafrepo=$3  # repo hash from Overleaf
 
 # first clone and setup the overleaf repo
 git clone --recursive https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo || exit
@@ -36,6 +35,15 @@ EOT
 git add .
 git commit -am 'add main.tex and friends'
 git push --set-upstream origin feature/overleaf
+
+
+# sync with Overleaf repo
+git remote add overleaf $overleafrepo
+git fetch overleaf
+git checkout -b overleaf_master overleaf/master
+git merge --no-edit --allow-unrelated-histories feature/overleaf -X ours
+git push overleaf HEAD:master
+
 
 # finally clone the master repo again - this one will be synced with gitlab
 cd ..

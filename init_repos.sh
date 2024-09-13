@@ -36,15 +36,6 @@ git add .
 git commit -am 'add main.tex and friends'
 git push --set-upstream origin feature/overleaf
 
-
-# sync with Overleaf repo
-git remote add overleaf   https://git.overleaf.com/$overleafrepo
-git fetch overleaf
-git checkout -b overleaf_master overleaf/master
-git merge --allow-unrelated-histories feature/overleaf -X ours
-git push overleaf HEAD:master
-
-
 # finally clone the master repo again - this one will be synced with gitlab
 cd ..
 mv $repo $repo-overleaf

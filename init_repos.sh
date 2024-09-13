@@ -1,11 +1,12 @@
 #!/bin/zsh
 # Script for initializing the Overleaf repo and a separate master repo synced with Gitlab
-# Usage: ./init_repo.sh <repo> <repotype> <overleaf repo hash>
-# Example: ./init_repo.sh HIG-23-012 notes 667f2ccce2d92e4892dfa502
+# Note that the Overleaf syncing has to be done separately (see README)
+#
+# Usage: ./init_repo.sh <repo> <repotype>
+# Example: ./init_repo.sh HIG-23-012 notes
 
 repo=$1
 repotype=$2
-overleafrepo=$3  # repo hash from Overleaf
 
 # first clone and setup the overleaf repo
 git clone --recursive https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo || exit

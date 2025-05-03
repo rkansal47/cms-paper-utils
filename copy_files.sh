@@ -7,8 +7,7 @@ masterrepo="$repo-master"
 
 (
     cd $overleafrepo
-    git fetch overleaf
-    git pull
+    git pull overleaf master
 )
 
 rm -rf $masterrepo/{figures,tables,main.tex,notation.tex,$repo.tex,$repo.bib}

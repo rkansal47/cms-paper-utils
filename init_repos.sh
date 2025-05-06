@@ -48,4 +48,4 @@ git push overleaf HEAD:master
 # finally clone the master repo again - this one will be synced with gitlab
 cd ..
 mv $repo $repo-overleaf
-git clone https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo-master
+git clone --recursive https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo

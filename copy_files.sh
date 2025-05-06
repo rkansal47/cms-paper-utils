@@ -3,7 +3,7 @@
 
 repo=$1
 overleafrepo="$repo-overleaf"
-masterrepo="$repo-master"
+masterrepo="$repo"
 
 (
     cd $overleafrepo

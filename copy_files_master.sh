@@ -3,7 +3,7 @@
 
 repo=$1
 overleafrepo="$repo-overleaf"
-masterrepo="$repo-master"
+masterrepo="$repo"
 
 (
     # Make sure there are no uncommitted changes in the Overleaf repo

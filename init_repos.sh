@@ -10,8 +10,7 @@ overleafrepo=$3  # repo hash from Overleaf
 # first clone and setup the overleaf repo
 git clone --recursive https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo || exit
 cd $repo
-git checkout -b feature/overleaf
-python3 utils/general/standalone.py
+python utils/general/standalone.py
 
 # replace utils submodule with plain directory
 mv utils temp_utils

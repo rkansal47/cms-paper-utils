@@ -10,6 +10,7 @@ overleafrepo=$3  # repo hash from Overleaf
 # first clone and setup the overleaf repo
 git clone --recursive https://gitlab.cern.ch/tdr/$repotype/$repo.git $repo || exit
 cd $repo
+git checkout -b feature/overleaf
 python utils/general/standalone.py
 
 # replace utils submodule with plain directory
@@ -33,7 +34,7 @@ EOT
 # push
 git add .
 git commit -am 'add main.tex and friends'
-git push --set-upstream origin feature/overleaf
+git push origin feature/overleaf
 
 
 # sync with Overleaf repo
